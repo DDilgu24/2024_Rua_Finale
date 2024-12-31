@@ -11,9 +11,10 @@ public class SelectManager : MonoBehaviour
     public Image[] image;            // UI Image ÄÄÆ÷³ÍÆ®
     public GameObject[] cursor;
     private string[] spriteNames;
+
     private void Start()
     {
-        spriteNames = Resources.LoadAll<Sprite>("Characters/Icon").Select(s => s.name).ToArray();
+        spriteNames = GameManager.instance.spriteNames;
 
         for (int i = 0; i < 24; i++)
         {

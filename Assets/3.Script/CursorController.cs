@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class CursorController : MonoBehaviour
 {
@@ -7,7 +10,18 @@ public class CursorController : MonoBehaviour
     private InputAction inputUp, inputLeft, inputDown, inputRight, inputNext, inputBack;
     public GameObject[] cursor;
     private RectTransform cursorRT;
+    private Tween blink;
+
+    public SpriteAtlas profileAtlas;
+    private Sprite[] profileSprites;
+    public Image[] upperProfile;
+
     private int cursorPos;
+
+    private void Start()
+    {
+
+    }
     void OnEnable()
     {
         // Action Map 가져오기
@@ -39,6 +53,7 @@ public class CursorController : MonoBehaviour
 
         // Cursor 활성화
         cursor[0].SetActive(true);
+        blink = cursor[0].transform.GetChild(2).GetComponent<Image>().DOFade(0.2f, 0.75f).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
         cursorRT = cursor[0].GetComponent<RectTransform>();
         cursorPos = 11;
     }
@@ -80,10 +95,19 @@ public class CursorController : MonoBehaviour
     private void OnNext(InputAction.CallbackContext context)
     {
         cursor[0].transform.GetChild(0).gameObject.SetActive(true);
+        if (blink != null && blink.IsActive())
+        {
+            blink.Pause(); // Tween 일시정지
+            cursor[0].transform.GetChild(2).GetComponent<Image>().DOFade(1f, 0.1f); // 초기 상태로 복원 (알파 값 1)
+        }
     }
     private void OnBack(InputAction.CallbackContext context)
     {
         cursor[0].transform.GetChild(0).gameObject.SetActive(false);
+        if (blink != null && blink.IsActive())
+        {
+            blink.Play(); // Tween 재시작
+        }
     }
     private void cursorMove(int i)
     {
@@ -94,5 +118,10 @@ public class CursorController : MonoBehaviour
         else if (cursorPos % 10 == 9) cursorPos -= 8;
         cursorRT.anchoredPosition = new Vector2((cursorPos % 10) * 200 - 900,
                                                 (cursorPos / 10) * -150 + 50);
+        upperProfile[0].sprite = profileAtlas.GetSprite(GameManager.instance.spriteNames[(cursorPos % 10 - 1) * 3 + (cursorPos / 10 - 1)]);
+        upperProfile[0].gameObject.GetComponent<RectTransform>().sizeDelta = upperProfile[0].sprite.bounds.size * 75;
     }
+
+
+
 }

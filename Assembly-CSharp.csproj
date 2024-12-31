@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\3.Script\CursorController.cs" />
     <Compile Include="Assets\3.Script\SelectManager.cs" />
+    <Compile Include="Assets\3.Script\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
