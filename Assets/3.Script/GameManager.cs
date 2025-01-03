@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        spriteNames = Resources.LoadAll<Sprite>("Characters/Icon").Select(s => s.name).ToArray();
+        spriteNames = Resources.LoadAll<Sprite>("Characters/Select").Select(s => s.name).ToArray();
     }
 
 }
