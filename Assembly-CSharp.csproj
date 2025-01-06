@@ -56,9 +56,13 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\3.Script\CursorController.cs" />
-    <Compile Include="Assets\3.Script\SelectManager.cs" />
+    <Compile Include="Assets\3.Script\3.Select\CursorController.cs" />
+    <Compile Include="Assets\3.Script\3.Select\SelectManager.cs" />
     <Compile Include="Assets\3.Script\GameManager.cs" />
+    <Compile Include="Assets\3.Script\4.Ingame\IngameManager.cs" />
+    <Compile Include="Assets\3.Script\4.Ingame\UFOs_Controller.cs" />
+    <Compile Include="Assets\3.Script\4.Ingame\PlayerStat.cs" />
+    <Compile Include="Assets\3.Script\MiniGame\MiniGameResultManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
