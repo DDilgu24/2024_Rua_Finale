@@ -170,7 +170,7 @@ public class CursorController : MonoBehaviour
         else
         {
             GameManager.instance.selectCharNo = selectCharNo;
-            GameManager.instance.LoadScene("4.Ingame");
+            GameManager.instance.LoadScene("4.InGame");
         }
     }
 

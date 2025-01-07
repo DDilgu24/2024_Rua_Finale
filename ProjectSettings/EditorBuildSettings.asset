@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/1.Scene/3.Select.unity
     guid: 29e3ece909bbf2448a80312c13fca9d9
   - enabled: 1
-    path: Assets/1.Scene/4.Ingame.unity
+    path: Assets/1.Scene/4.InGame.unity
     guid: dd7cfeb38f054d548ad8e4f97d0fad1a
+  - enabled: 1
+    path: Assets/1.Scene/TestMinigame.unity
+    guid: 8571c1296f9380443b5a007560fa7872
   m_configObjects: {}

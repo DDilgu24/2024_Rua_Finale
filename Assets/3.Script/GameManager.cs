@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         public bool isPass;
         public int rank;
     }
-    MiniGameResult[] miniGameResult = new MiniGameResult[4];
+    public MiniGameResult[] miniGameResult = new MiniGameResult[4];
 
     private void Awake()
     {
@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            for (int i = 0; i < miniGameResult.Length; i++)
+            {
+                miniGameResult[i] = new MiniGameResult();
+            }
         }
         else
         {
@@ -46,7 +50,7 @@ public class GameManager : MonoBehaviour
     }
 
     // 페이드 관련 메소드
-    private IEnumerator Fade(bool isIn, System.Action onComplete)
+    private IEnumerator Fade(bool isIn, System.Action onComplete, float fadeDuration = 0.75f)
     {
         fadeImage.gameObject.SetActive(true);
         IsFading = true;
@@ -69,14 +73,14 @@ public class GameManager : MonoBehaviour
         fadeImage.gameObject.SetActive(false);
         onComplete?.Invoke(); // 동작 완료 후 전달 된 콜백 함수를 호출
     }
-    public void FadeIn(System.Action onComplete = null) { StartCoroutine(Fade(true, onComplete)); }
-    public void FadeOut(System.Action onComplete = null) { StartCoroutine(Fade(false, onComplete)); }
-    public void LoadScene(string sceneName)
+    public void FadeIn(float time, System.Action onComplete = null) { StartCoroutine(Fade(true, onComplete, time)); }
+    public void FadeOut(float time, System.Action onComplete = null) { StartCoroutine(Fade(false, onComplete, time)); }
+    public void LoadScene(string sceneName, float fadeDuration = 0.75f)
     {
-        FadeOut(() =>
+        FadeOut(fadeDuration, () => 
         {
             SceneManager.LoadScene(sceneName);
-            FadeIn();
+            FadeIn(fadeDuration);
         });
     }
 

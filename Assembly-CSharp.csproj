@@ -57,12 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\3.Script\3.Select\CursorController.cs" />
+    <Compile Include="Assets\3.Script\4.InGame\InGameManager.cs" />
     <Compile Include="Assets\3.Script\3.Select\SelectManager.cs" />
-    <Compile Include="Assets\3.Script\GameManager.cs" />
-    <Compile Include="Assets\3.Script\4.Ingame\IngameManager.cs" />
-    <Compile Include="Assets\3.Script\4.Ingame\UFOs_Controller.cs" />
-    <Compile Include="Assets\3.Script\4.Ingame\PlayerStat.cs" />
     <Compile Include="Assets\3.Script\MiniGame\MiniGameResultManager.cs" />
+    <Compile Include="Assets\3.Script\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

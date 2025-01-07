@@ -12,11 +12,12 @@ public class MiniGameResultManager : MonoBehaviour
         bool pass = toggle.isOn;
         int rank = (int)slider.value;
 
-        GameManager.instance.MinigameResult(1, pass, rank);
-        GameManager.instance.MinigameResult(2, pass, rank);
-        GameManager.instance.MinigameResult(3, pass, rank);
-        GameManager.instance.MinigameResult(4, pass, rank);
+        for (int i = 1; i <= 4; i++)
+        {
+            GameManager.instance.MinigameResult(i, pass, rank);
+        }
 
-        GameManager.instance.LoadScene("4.Ingame");
+        InGameManager.instance.AfterMiniGame();
+        GameManager.instance.LoadScene("4.InGame", 0.15f);
     }
 }
