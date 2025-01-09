@@ -159,8 +159,8 @@ Camera:
   m_GameObject: {fileID: 106143307}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6933962, g: 0.812631, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3227,8 +3227,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13701d87699a16b4ebc3c6623353304c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toggle: {fileID: 198680478}
-  slider: {fileID: 1177252723}
+  toggle:
+  - {fileID: 198680478}
+  - {fileID: 1501533046}
+  - {fileID: 338349677}
+  - {fileID: 1173383838}
+  slider:
+  - {fileID: 1177252723}
+  - {fileID: 206743219}
+  - {fileID: 2043231478}
+  - {fileID: 1246949504}
 --- !u!4 &1973269664
 Transform:
   m_ObjectHideFlags: 0

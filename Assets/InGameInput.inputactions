@@ -1,0 +1,94 @@
+{
+    "name": "InGameInput",
+    "maps": [
+        {
+            "name": "Start",
+            "id": "4258fa4a-9f27-403f-abd4-d253978a8df1",
+            "actions": [
+                {
+                    "name": "1P_Start",
+                    "type": "Button",
+                    "id": "85588907-fece-43a4-8a40-85ad5f8c00ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "2P_Start",
+                    "type": "Button",
+                    "id": "bb92c8bd-91bf-46e8-805e-e03866383974",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "3P_Start",
+                    "type": "Button",
+                    "id": "8e8a44cd-7797-41cf-bd8e-c66dda1a683d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "4P_Start",
+                    "type": "Button",
+                    "id": "bf9d8a69-2d50-4ffc-8fab-90536a724107",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5d3f3b24-74c7-4fe7-826e-e5f2316f6587",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "1P_Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8870c2b0-3cf0-42f7-8a76-5e7104ccfb82",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "2P_Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2bc11083-4e28-4d55-a6dc-6fc650db7b8c",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "3P_Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d64decc-907d-4f0e-8158-74117f1d28b3",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "4P_Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
