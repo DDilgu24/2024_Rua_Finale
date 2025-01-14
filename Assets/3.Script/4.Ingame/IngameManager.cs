@@ -35,6 +35,8 @@ public class InGameManager : MonoBehaviour
     public GameObject UFO;
     private Transform[] UFO_Player = new Transform[4];
     private SpriteRenderer[] UFO_Icon_Player = new SpriteRenderer[4];
+    private ParticleSystem[] UFO_FailParticle = new ParticleSystem[4];
+    private ParticleSystem[] UFO_BoosterParticle = new ParticleSystem[4];
 
     public Text GameOverText;
     private float continueCount;
@@ -71,6 +73,8 @@ public class InGameManager : MonoBehaviour
 
                 UFO_Player[i] = UFO.transform.GetChild(i).GetComponent<Transform>();
                 UFO_Icon_Player[i] = UFO_Player[i].GetChild(1).GetComponent<SpriteRenderer>();
+                UFO_FailParticle[i] = UFO_Player[i].GetChild(2).GetChild(0).GetComponent<ParticleSystem>();
+                UFO_BoosterParticle[i] = UFO_Player[i].GetChild(2).GetChild(1).GetComponent<ParticleSystem>();
 
                 // 캐릭터 아이콘 적용
                 int CursorPos = GameManager.instance.selectCharNo[i];
@@ -137,6 +141,13 @@ public class InGameManager : MonoBehaviour
     private IEnumerator BeforeMiniGame()
     {
         yield return new WaitForSeconds(2.5f); // 대기: UFO 애니메이션 동작 시간(2초) + 0.5초
+        // [임시 조치] 부스터 파티클 수동 off
+        /*
+        for (int i = 0; i < 4; i++)
+        {
+            if (UFO_BoosterParticle[i].isPlaying) UFO_BoosterParticle[i].Stop();
+        }
+        */
 
         // 컨티뉴 관련
         yield return StartCoroutine("ContinueCheck");
@@ -289,7 +300,7 @@ public class InGameManager : MonoBehaviour
     private void UFOAnimation(string type, int pNo)
     {
         var ufo = UFO_Player[pNo - 1];
-        
+        bool isBooster = true;
         if (type == "init" || type == "i")
         {
             DOTween.Sequence()
@@ -306,17 +317,19 @@ public class InGameManager : MonoBehaviour
         }
         else if (type == "fail" || type == "f")
         {
-            ufo.rotation = Quaternion.Euler(0, 0, -30);
+            isBooster = false;
+            ufo.rotation = Quaternion.Euler(0, 0, -45);
             DOTween.Sequence()
-                .Append(ufo.DORotate(new Vector3(0, 0, 30), 0.25f).SetEase(Ease.InOutSine).SetLoops(4, LoopType.Yoyo))
+                .Append(ufo.DORotate(new Vector3(0, 0, 45), 0.25f).SetEase(Ease.InOutSine).SetLoops(4, LoopType.Yoyo))
                 .Join(ufo.DOMove(UFO_TargetPos(pNo), 1f))
                 .Append(ufo.DORotate(new Vector3(0, 0, 0), 0))
                 ;// .Append(ufo.DORotate(new Vector3(0, 0, 0), 1f)).OnComplete(() => UFOAnimation("o", pNo));
         }
         else if (type == "out" || type == "o")
         {
+            isBooster = false;
             DOTween.Sequence()
-                .Append(ufo.DORotate(new Vector3(0, 0, 180), 2f))
+                .Append(ufo.DORotate(new Vector3(0, 0, 180), 1f))
                 .Join(ufo.DOJump(UFO_TargetPos(-pNo), 1f, 1, 1f))
                 ;// .Append(ufo.DORotate(new Vector3(0, 0, 0), 1f)).OnComplete(() => UFOAnimation("c", pNo));
         }
@@ -327,6 +340,8 @@ public class InGameManager : MonoBehaviour
                 .Append(ufo.DOMove(UFO_TargetPos(pNo), 1f).SetEase(Ease.OutExpo))
                ;//  .Append(ufo.DORotate(new Vector3(0, 0, 0), 1f)).OnComplete(() => UFOAnimation("s", pNo));
         }
+        if (isBooster) UFO_BoosterParticle[pNo - 1].Play();
+        else UFO_FailParticle[pNo - 1].Play();
     }
 
     private Vector3 UFO_TargetPos(int pNo)
