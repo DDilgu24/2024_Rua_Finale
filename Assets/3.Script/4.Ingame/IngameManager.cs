@@ -293,7 +293,7 @@ public class InGameManager : MonoBehaviour
 
     private void NumAppear(Transform t)
     {
-        t.DOScale(2f, 0.25f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo);
+        t.DOScale(1.5f, 0.25f).SetEase(Ease.OutQuad).SetLoops(2, LoopType.Yoyo);
     }
 
     // 미니게임 결과에 따른 UFO 애니메이션 메소드

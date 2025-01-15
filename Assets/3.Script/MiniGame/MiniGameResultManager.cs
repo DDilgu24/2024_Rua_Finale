@@ -13,7 +13,7 @@ public class MiniGameResultManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             int r = Random.Range(0, 60);
-            toggle[i].isOn = (r >= 20);
+            toggle[i].isOn = (r >= 30);
             slider[i].value = r / 10;
         }
     }
